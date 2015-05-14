@@ -11,7 +11,7 @@ public class KSpace {
     protected final Alphabet alphabet;
     protected final Map<String, Integer> forwardMap;
 
-    public KSpace(int k, Alphabet alphabet) {
+    protected KSpace(int k, Alphabet alphabet) {
         this.k = k;
         this.alphabet = alphabet;
         this.forwardMap = new HashMap<String, Integer>(this.alphabet.getSymbols().size() ^ this.k);
@@ -29,6 +29,14 @@ public class KSpace {
         for(char[]c:grid){
             forwardMap.put(new String(c),i++);
         }
+    }
+
+    public int getK() {
+        return k;
+    }
+
+    public Optional<Integer> getCode(char[]kmer){
+        return Optional.ofNullable(this.forwardMap.get(new String(kmer)));
     }
 
     public Map<String, Integer> getForwardMap() {
@@ -51,4 +59,7 @@ public class KSpace {
         }
     }
 
+    protected static KSpace get(int k, Alphabet alphabet){
+        return new KSpace(k,alphabet);
+    }
 }

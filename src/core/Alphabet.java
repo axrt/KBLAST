@@ -22,6 +22,9 @@ public abstract class Alphabet {
             this.symbols.add(c);
         }
     }
+    public int length(){
+        return this.symbols.size();
+    }
 
     public Set<Character> getSymbols() {
         return symbols;
