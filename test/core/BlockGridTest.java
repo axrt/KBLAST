@@ -20,8 +20,8 @@ public class BlockGridTest {
         final Alphabet alphabet = new Alphabet(new char[]{'A', 'T', 'C', 'G'}) {
         };
 
-        final int k=7;
-        final int blockSize=10000;
+        final int k=5;
+        final int blockSize=5000;
         final KSpace kSpace=new KSpace(k,alphabet);
         try{
 
@@ -41,7 +41,7 @@ public class BlockGridTest {
             final BlockGrid queryBlockGrid=BlockGrid.get(queryCoordinatedKmerMap,kSpace,blockSize);
             List<BlockGrid.Block> hitBlocks=null;
             final long start=System.currentTimeMillis();
-            for(int i=0;i<10000;i++){
+            for(int i=0;i<1000;i++){
                 hitBlocks=BlockGrid.getMaximulLikelyBlocks(blockGrid,queryBlockGrid);
             }
             final long stop=System.currentTimeMillis();

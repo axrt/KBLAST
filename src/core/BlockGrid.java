@@ -120,9 +120,9 @@ public class BlockGrid implements Serializable{
 
         double d=0;
         for(int i=0;i<vec1.length;i++){
-            d+=Math.pow((vec1[i]-vec2[i]),2);
+            d+=Math.pow(vec1[i]-vec2[i],2);
         }
-        return Math.sqrt(d);
+        return d;
 
     }
 
