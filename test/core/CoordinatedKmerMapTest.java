@@ -25,8 +25,8 @@ public class CoordinatedKmerMapTest {
             final String sequence= Files.lines(Paths.get("testres/k12.fasta")).skip(1).collect(Collectors.joining());
             final CoordinatedKmerMap coordinatedKmerMap=CoordinatedKmerMap.get(sequence, kSpace);
 
-            Assert.assertEquals(coordinatedKmerMap.lenght(),sequence.length()-kSpace.getK()+1);
-            Assert.assertEquals(coordinatedKmerMap.get(2).getCode(),32);
+            Assert.assertEquals(coordinatedKmerMap.lenght(),sequence.length()-kSpace.getK());
+            Assert.assertEquals(coordinatedKmerMap.get(2).getCode(),6);
 
         }catch (IOException e){
             e.printStackTrace();

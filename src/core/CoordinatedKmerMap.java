@@ -17,6 +17,8 @@ public class CoordinatedKmerMap implements Serializable {
     protected CoordinatedKmerMap(String sequence,List<CoordinatedKmer> coordinatedKmers) {
         this.sequence=sequence;
         this.coordinatedKmers = coordinatedKmers;
+        System.out.println("Sequence length: " + this.sequence.length());
+        System.out.println("CoordKmers : "+this.coordinatedKmers.size());
     }
 
     public CoordinatedKmer get(int i){
@@ -39,7 +41,7 @@ public class CoordinatedKmerMap implements Serializable {
     protected static List<CoordinatedKmer> parse(String sequence,KSpace kSpace){
         final int edge=sequence.length()-kSpace.getK();
         final List<CoordinatedKmer>coordinatedKmerList=new ArrayList<CoordinatedKmer>(edge);
-        for(int i=0;i<=edge;i++){
+        for(int i=0;i<edge;i++){
             final String kmer=sequence.substring(i,i+kSpace.getK());
             final Optional<Integer> code=kSpace.getCode(kmer);
             final CoordinatedKmer coordinatedKmer;
