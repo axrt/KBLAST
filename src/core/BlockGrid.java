@@ -21,7 +21,7 @@ public class BlockGrid implements Serializable{
         this.kSpace=kSpace;
         final int numBlocks=coordinatedKmerMap.lenght()/blockSize;
         this.blocks=new ArrayList<Block>(numBlocks+1);
-        for(int i=0;i<numBlocks;i++){
+        for(int i=0;i<numBlocks;i+=blockSize){
             this.blocks.add(new Block(coordinatedKmerMap.getSequence(),i,i+blockSize));
         }
         this.blocks.add(new Block(coordinatedKmerMap.getSequence(),numBlocks*blockSize,coordinatedKmerMap.getSequence().length()));
@@ -47,10 +47,11 @@ public class BlockGrid implements Serializable{
             final String sequenceChunk=getSequenceChunk();
             final int numberOfKmers=sequenceChunk.length()-kSpace.getK();
             for(int i=0;i<=numberOfKmers;i++){
-                this.kmerFrequency[kSpace.getCode(sequenceChunk.substring(i,i+kSpace.getK()+1)).get()]++;
+                this.kmerFrequency[kSpace.getCode(sequenceChunk.substring(i,i+kSpace.getK())).get()]++;
             }
-            for(int i=0;i<=numberOfKmers;i++){
-                this.kmerFrequency[i]/=this.kmerFrequency.length;
+            final double norm=DoubleStream.of(this.kmerFrequency).sum();
+            for(int i=0;i<kSpace.forwardMap.size();i++){
+                this.kmerFrequency[i]/=norm;
             }
             this.meanFrequency= DoubleStream.of(this.kmerFrequency).sum()/this.kmerFrequency.length;
         }
