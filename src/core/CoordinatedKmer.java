@@ -9,27 +9,23 @@ public class CoordinatedKmer implements Serializable{
 
     protected final int k;
     protected final int coordinate;
-    protected final String sequence;
+    protected final int code;
 
-    public CoordinatedKmer(int k, int coordinate, String sequence) {
+    public CoordinatedKmer(int k, int coordinate, int code) {
         this.k = k;
         this.coordinate = coordinate;
-        this.sequence = sequence;
-    }
-    public CoordinatedKmer(int k, int coordinate, char[] sequence) {
-        this(k,coordinate,new String(sequence));
+        this.code = code;
     }
 
     public int getK() {
-        return k;
+        return this.k;
     }
 
     public int getCoordinate() {
-        return coordinate;
+        return this.coordinate;
     }
 
-    public String getSequence() {
-        return sequence;
+    public int getCode() {
+        return this.code;
     }
-
 }

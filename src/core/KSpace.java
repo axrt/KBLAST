@@ -39,6 +39,10 @@ public class KSpace {
         return Optional.ofNullable(this.forwardMap.get(new String(kmer)));
     }
 
+    public Optional<Integer> getCode(String kmer){
+        return Optional.ofNullable(this.forwardMap.get(kmer));
+    }
+
     public Map<String, Integer> getForwardMap() {
         return forwardMap;
     }

@@ -26,7 +26,7 @@ public class CoordinatedKmerMapTest {
             final CoordinatedKmerMap coordinatedKmerMap=CoordinatedKmerMap.get(sequence, kSpace);
 
             Assert.assertEquals(coordinatedKmerMap.lenght(),sequence.length()-kSpace.getK()+1);
-            Assert.assertEquals(coordinatedKmerMap.get(100).getSequence(),"TAA");
+            Assert.assertEquals(coordinatedKmerMap.get(100).getCode(),32);
 
         }catch (IOException e){
             e.printStackTrace();
